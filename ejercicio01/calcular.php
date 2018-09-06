@@ -6,6 +6,13 @@ $vars=$_GET;
 switch($vars['op']){
         //crear objeto
     case 1:{
+            //Si la sesion existe eliminarla y volver a crear
+            if(isset($_SESSION)){
+                // Remover las variables de sesion
+                session_unset(); 
+
+            }   
+
             $obj= new Circulo($vars['r'],$vars['c']);
             echo "<pre>";
             var_dump($obj);
@@ -26,6 +33,11 @@ switch($vars['op']){
     }
     case 4:{
         echo "-".Circulo::ValorPi();
+            break;
+    }
+    case 5:{
+        $obj= new Circulo($_SESSION['r'],$_SESSION['c']);
+        echo $obj->color();
             break;
     }
         

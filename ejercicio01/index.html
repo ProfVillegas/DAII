@@ -10,15 +10,93 @@
 	<body>
         <div class="container">
             <form>
-            
+                
+                <ul class="menu">
+                    <li><a href="#" id="fCuadrado" class="fOpcion">Cuadrado</a></li>
+                    <li><a href="#" id="fTriangulo" class="fOpcion">Triangulo</a></li>
+                    <li><a href="#" id="fCirculo" class="fOpcion">Circulo</a></li>
+                </ul>
+                <div class="form-group dCuadrado item">
+                    <label for="radio">radio:</label>
+                    <input type="number" min="1" id="radio" name="r" />                
+                </div>
+                <div class="form-group dTriangulo item">
+                    <label for="radio">radio:</label>
+                    <input type="number" min="1" id="radio" name="r" />                
+                </div>
+                <div class="form-group dCirculo item">
+                    <label for="radio">radio:</label>
+                    <input type="number" min="1" id="radio" name="r" />                
+                </div>
+                
+                <div class="form-group">
+                    <label for="color">Color:</label>
+                    <input type="color" min="1" id="color" name="c" />                
+                </div>
+                <fieldset>
+                    <legend>Seleccione operación:</legend>
+                    <div>
+                        <input type="radio" id="nuevo" name="op" value="1" checked />
+                        <label for="nuevo">nuevo</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="area" name="op" value="2"  />
+                        <label for="area">Area</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="perimetro" value="3" name="op" value="3" />
+                        <label for="perimetro">perimetro</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="pi" name="op" value="4" />
+                        <label for="pi">pi</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="selectcolor" name="op" value="5" />
+                        <label for="selectcolor">color</label>
+                    </div>
+
+                </fieldset>
+                <input type="button" class="calcular" value="Ejecutar"/>
             </form>
-            <div class="">
+            <div id="resultado" class="resultado">
             </div>
         </div>
         
         <script src="jquery-3.3.1.min.js"></script>
         <script type="text/javascript">
-        
+            $(document).ready(function(){
+                $('.calcular').click(function(e){
+                   e.preventDefault();
+                   data=$("form").serialize(); 
+                   $.ajax({
+                       url:"calcular.php",
+                       type:"GET",
+                       data:data,
+                       success:function(html){
+                               $("#resultado").html(html);
+                       },
+                       error:function(){
+                           
+                       }
+                       
+                   })
+                });
+                $(".fOpcion").click(function(e){
+                    e.preventDefault();
+                    
+                });    
+            })
         </script>
+        <style>
+            .dark{
+                background: #000;
+                color: #FFF;
+                font-size: 1.2em;
+            }
+            .item{
+                display: none;
+            }
+        </style>
     </body>
 </html>
