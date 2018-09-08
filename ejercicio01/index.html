@@ -12,19 +12,21 @@
             <form>
                 
                 <ul class="menu">
-                    <li><a href="#" id="fCuadrado" class="fOpcion">Cuadrado</a></li>
-                    <li><a href="#" id="fTriangulo" class="fOpcion">Triangulo</a></li>
-                    <li><a href="#" id="fCirculo" class="fOpcion">Circulo</a></li>
+                    <li><a href="#" data-id="fCuadrado" class="fOpcion">Cuadrado</a></li>
+                    <li><a href="#" data-id="fTriangulo" class="fOpcion">Triangulo</a></li>
+                    <li><a href="#" data-id="fCirculo" class="fOpcion">Circulo</a></li>
                 </ul>
-                <div class="form-group dCuadrado item">
-                    <label for="radio">radio:</label>
-                    <input type="number" min="1" id="radio" name="r" />                
+                <div class="form-group fCuadrado opcion item">
+                    <label for="lado">Lado:</label>
+                    <input type="number" min="1" id="lado" name="l" />                
                 </div>
-                <div class="form-group dTriangulo item">
-                    <label for="radio">radio:</label>
-                    <input type="number" min="1" id="radio" name="r" />                
+                <div class="form-group fTriangulo opcion item">
+                    <label for="base">base:</label>
+                    <input type="number" min="1" id="base" name="b" />
+                    <label for="altura">altura:</label>
+                    <input type="number" min="1" id="altura" name="h" />                
                 </div>
-                <div class="form-group dCirculo item">
+                <div class="form-group fCirculo opcion item">
                     <label for="radio">radio:</label>
                     <input type="number" min="1" id="radio" name="r" />                
                 </div>
@@ -84,6 +86,9 @@
                 });
                 $(".fOpcion").click(function(e){
                     e.preventDefault();
+                    $(".opcion input").val(null);
+                    $(".opcion").addClass('item');
+                    $("."+$(this).data('id')).removeClass('item');
                     
                 });    
             })
@@ -96,6 +101,31 @@
             }
             .item{
                 display: none;
+            }
+            .menu {
+                display: inline-flex;
+                text-decoration: none;
+                list-style: none;
+                
+            }
+            .menu li{
+                list-style: none;
+                display: inline-block;
+            }
+            .menu a{
+                display:block;
+                padding: 10px;
+                margin: 5px;
+                text-align: center;
+                border-radius: 10px;
+                background: #A2C11E;
+                text-decoration: none;
+                font-weight: bold;
+                color: #ddd;
+            }
+            .menu a:hover{
+                background: #A23300;
+                color: #FFF;
             }
         </style>
     </body>

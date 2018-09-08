@@ -1,6 +1,6 @@
 <?php
-class circulo{
-    private $color;
+include_once("figura.class.php");
+class circulo extends figura{
     private $radio;
     private static $pi = "3.1416";
     
@@ -18,11 +18,6 @@ class circulo{
     }
     public function perimetro(){
         return ($this->radio*2)*self::$pi;
-    }
-    public function color(){
-        echo "<style>
-                body{background:".$this->color.";}
-              </style>";
     }
 }
 
