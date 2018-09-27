@@ -92,14 +92,12 @@ class Router{
 
         if ( count($path_parts) ){
 
-            // Get route 
+            // Get route or language at first element
             if ( in_array(strtolower(current($path_parts)), array_keys($routes)) ){
                 $this->route = strtolower(current($path_parts));
                 $this->method_prefix = isset($routes[$this->route]) ? $routes[$this->route] : '';
                 array_shift($path_parts);
-            } 
-            //language at first element
-            if ( in_array(strtolower(current($path_parts)), Config::get('languages')) ){
+            } elseif ( in_array(strtolower(current($path_parts)), Config::get('languages')) ){
                 $this->language = strtolower(current($path_parts));
                 array_shift($path_parts);
             }
