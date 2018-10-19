@@ -7,12 +7,28 @@
 	<title> Formulario </title>
     <script>
         var registros=localStorage.registros;
-        if(registros!=null){
-            console.log(registros);
-            console.log(JSON.parse(registros));
+        if(registros==null){
+            registros = [];
+        } else {
+            
+            registros=JSON.parse(registros);
         }
     </script>
-   
+   <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <style type="text/css">
+        body {
+            padding-top: 5rem;
+        }
+
+        .starter-template {
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+    </style>
 </head>
 
 	<body>
@@ -25,7 +41,9 @@
                 <label for="telefono">Telefono</label>
                 <input type="tel" id="telefono" name="telefono"  />
                 <input type="button" name="agregar" id="agregar" value="agregar" onclick="add()" />
+                <input type="button" name="imprimir" value="imprimir" onclick="printer();" />
             </form>
+            <div id="resultado"></div>
         </div>
         <script>
         function add(){
@@ -33,13 +51,71 @@
             var apellido=document.getElementById("apellido").value;
             var telefono=document.getElementById("telefono").value;
             var registro=({"nombre":nombre,"apellido":apellido,"telefono":telefono});
-            var cadena =JSON.stringify(registro);
-            localStorage.setItem('registros',cadena);
+            //var cadena =JSON.parse(registro);
+            registros.push(registro);           
+            console.log(registros);
+            localStorage.setItem('registros',JSON.stringify(registros));
+        }
+        function printer(){
+            
+            if(registros.length>0){
+                temp= registros;
+                console.log(temp);
+                var tb = document.createElement("table");
+                var r=temp;
+                for(x in r){
+                    
+                var tr = document.createElement("tr");
+                var td1= document.createElement("td");
+                var txt1= document.createTextNode(temp[x].nombre);
+                var td2= document.createElement("td");
+                var txt2= document.createTextNode(temp[x].apellido);
+                var td3= document.createElement("td");
+                var txt3= document.createTextNode(temp[x].telefono);
+                var td4 = document.createElement("td");
+                var lnkEditar= document.createElement("a");
+                var lnkEliminar= document.createElement("a");
+                var txtEditar=document.createTextNode("Editar");  
+                var txtEliminar=document.createTextNode("Editar"); 
+                
+                lnkEditar.classList.add("btn");
+                lnkEditar.classList.add("btn-success");
+                lnkEditar.classList.add("editar");
+                lnkEditar.appendChild(txtEditar);
+                td4.appendChild(lnkEditar);
+                
+                td1.appendChild(txt1);
+                tr.appendChild(td1);
+                
+                td2.appendChild(txt2);
+                tr.appendChild(td2); 
+            
+                td3.appendChild(txt3);
+                tr.appendChild(td3);
+                
+                tr.appendChild(td4);
+                tb.appendChild(tr);
+                
+                tb.setAttribute('id','table');
+                tb.classList.add("table");
+                tb.classList.add("table-dark");
+                document.getElementById("resultado").appendChild(tb);
+                
+                    
+                }
+            }
+            
         }
             
         </script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
