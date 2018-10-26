@@ -9,6 +9,7 @@ function __autoload($class_name){
 
     if ( file_exists($lib_path) ){
         require_once($lib_path);
+       
     } elseif ( file_exists($controllers_path) ){
         require_once($controllers_path);
     } elseif ( file_exists($model_path) ){

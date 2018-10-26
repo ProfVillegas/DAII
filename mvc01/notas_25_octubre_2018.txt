@@ -1,0 +1,8 @@
+1. Crear el archivo DB en la carpeta de lib
+2. Crear la configuración en config\config.php
+3. integrar la referencia a la db en app.class.php de \lib.
+L. 9.
+L. 17.
+4. Prueba en \webroot\index.php
+
+
