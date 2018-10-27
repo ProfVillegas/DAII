@@ -21,58 +21,161 @@
 </head>
 
 <body>
-    <div>
+    <header>
 
-        <ul class="nav peach-gradient lighten-3 py-4 mb-4 font-weight-bold z-depth-1">
-            <li class="nav-item">
-                <a class="nav-link  
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark peach-gradient lighten-3 py-4 mb-4 ">
+
+            <!-- Additional container -->
+            <div class="container">
+
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="<?=WEBROOT.DS;?>img/log.svg" width="35"  class="d-inline-block align-top" alt="">
+                    SystemMVC
+                </a>
+
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link  
                           
                           <?=(App::getRouter()->getController()=='pages')?'active':'';?> 
                           
-                          white-text" href="<?=WEBROOT.DS?>Pages"><?=__('lng.lbpages', 'Unknow')?></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link
+                          white-text" href="<?=WEBROOT.DS?>Pages">
+                                <?=__('lng.lbpages', 'Unknow')?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link
                           <?=(App::getRouter()->getController()=='register')?'active':'';?>
                           
-                          white-text" href="<?=WEBROOT.DS?>Register"><?=__('lng.lbregister', 'unknow')?></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link white-text dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
+                          white-text" href="<?=WEBROOT.DS?>Register">
+                                <?=__('lng.lbregister', 'unknow')?></a>
+                        </li>
+
+
+                    </ul>
+                    <!-- Links -->
+
+                    <form class="form-inline">
+                        <div class="md-form my-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        </div>
+                    </form>
                 </div>
-            </li>
-        </ul>
-        <?=(App::getRouter()->getController());?>
+                <!-- Collapsible content -->
 
+            </div>
+            <!-- Additional container -->
 
-    </div>
+        </nav>
+        <!--/.Navbar-->
+
+    </header>
 
     <!-- Start your project here-->
-    <div style="height: 100vh">
+    <div style="height: 80vh">
         <div class="flex-center flex-column">
-            <h1 class="animated fadeIn mb-2">HEADER WILL BE HERE</h1>
-
-            <h5 class="animated fadeIn mb-1">Thank you for using our product. We're glad you're with us.</h5>
-
             <p class="animated fadeIn text-muted">
                 <?=$data['content']?>
             </p>
         </div>
-        <span>
-            <?=__('lng.test', 'default value')?></span>
+
     </div>
     <!-- /Start your project here-->
 
 
 
 
-    <h3>FOOTER WILL BE HERE</h3>
+   <footer class="page-footer font-small peach-gradient lighten-3 pt-4 mt-4">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">Footer Content</h5>
+          <p>Here you can use rows and columns here to organize your footer content.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="#"> Sistema</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
     <!-- JQuery -->
     <script type="text/javascript" src="<?=WEBROOT.DS;?>js/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap tooltips -->

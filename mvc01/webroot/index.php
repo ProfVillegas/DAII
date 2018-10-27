@@ -16,8 +16,9 @@ App::run(str_replace(RUTA_LOCAL,"",$_SERVER['REQUEST_URI']));
 //TEST
 
 
-*/
 $test=App::$db->query('show tables');
 echo "<pre>";
 
 print_r($test);
+
+*/

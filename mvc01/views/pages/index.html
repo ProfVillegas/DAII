@@ -1,6 +1,42 @@
-This is the pages/index.html
 
-<br/>
-<?=__('lng.test', 'default value')?>
-<?=$data['test_content']?>
-<?php include("form.html");?>
+<div class="container">
+<!--Table-->
+<table class="table table-hover table-fixed">
+ 
+    <thead>
+        <tr>
+        <?php
+            foreach($data['pages'][0] as $key=>$value){
+        ?>
+            <th><?=$key;?></th>
+            
+        <?php    
+            }
+        ?>
+        <th><a href="#"><a class="btn btn-primary btn-rounded "><i class="fa fa-plus"></i></a></a></th>
+        </tr>
+        
+    </thead>
+<?php
+foreach($data['pages'] as $page){
+?>
+<tr>
+    <th><a class="btn btn-light btn-rounded btn-sm" href="<?=WEBROOT.DS.(App::getRouter()->getController());?>/view/<?=$page['alias'];?>"><?=$page['id'];?></a></th>    
+    <td><?=$page['alias'];?></td>    
+    <td><?=$page['titulo'];?></td>    
+    <td><?=$page['contenido'];?></td>    
+    <td>
+        <?=($page['es_publicado']==1)?'<a href="#" class="btn btn-success btn-rounded"><i class="fa fa-eye"></i></a>':'<a href="#" class="btn btn btn-blue-grey btn-rounded "><i class="fa fa-eye-slash"></i></a>';?>
+        
+    </td>    
+    <td scope="row">
+        <a href="#" class="btn btn-default btn-rounded "><i class="fa fa-pencil"></i></a> 
+        <a href="#" class="btn btn-danger btn-rounded "><i class="fa fa-trash"></i></a>
+    </td>
+</tr>
+    
+<?php
+}
+?>
+</table>
+</div>
