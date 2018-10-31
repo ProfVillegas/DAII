@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title> Formulario </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Formulario </title>
     <script>
         var registros=localStorage.registros;
         if(registros==null){
@@ -13,15 +14,19 @@
             
             registros=JSON.parse(registros);
         }
+      var padre = null;
+              
     </script>
-   <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <style type="text/css">
-        body {
-            padding-top: 5rem;
-        }
+        body {}
 
         .starter-template {
             padding: 3rem 1.5rem;
@@ -31,96 +36,236 @@
     </style>
 </head>
 
-	<body>
-        <div>
-            <form>
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre"  />
-                <label for="apellido">Apellido</label>
-                <input type="text" id="apellido" name="apellido" />
-                <label for="telefono">Telefono</label>
-                <input type="tel" id="telefono" name="telefono"  />
-                <input type="button" name="agregar" id="agregar" value="agregar" onclick="add()" />
-                <input type="button" name="imprimir" value="imprimir" onclick="printer();" />
-            </form>
-            <div id="resultado"></div>
+<body onload="printer();">
+    <!--Header Bar-->
+    <header>
+
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark indigo">
+
+            <!-- Additional container -->
+            <div class="container">
+
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="#">Navbar</a>
+
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link waves-effect waves-light" href="#">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" href="#">Pricing</a>
+                        </li>
+
+                        <!-- Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <!-- Links -->
+
+                    <form class="form-inline">
+                        <div class="md-form my-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        </div>
+                    </form>
+                </div>
+                <!-- Collapsible content -->
+
+            </div>
+            <!-- Additional container -->
+
+        </nav>
+        <!--/.Navbar-->
+
+    </header>
+    <!--/.Header Bar-->
+
+    <!--Main layout-->
+    <main class="mt-5">
+
+        <!--Main container-->
+        <div class="container">
+
+
+            <div>
+                <form>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" />
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" />
+                    <label for="telefono">Telefono</label>
+                    <input type="tel" id="telefono" name="telefono" />
+                    <input type="button" name="agregar" id="agregar" value="agregar" onclick="add()" />
+                    <input type="button" name="imprimir" value="imprimir" onclick="printer();" />
+                </form>
+                <div id="resultado"></div>
+            </div>
+
+            <!--/.Main container-->
         </div>
-        <script>
-        function add(){
-            var nombre=document.getElementById("nombre").value;
-            var apellido=document.getElementById("apellido").value;
-            var telefono=document.getElementById("telefono").value;
-            var registro=({"nombre":nombre,"apellido":apellido,"telefono":telefono});
+        <!--/.Main layout-->
+    </main>
+    <!--HTML modal-->
+    <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center">
+                    <p class="heading">Are you sure?</p>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+
+                    <i class="fa fa-times fa-4x animated rotateIn"></i>
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <button id="confirm" onclick="actualiza()" class="btn btn-primary">Yes</button>
+                    <button id="cancel" class="btn" data-dismiss="modal" aria-hidden="true">No, leave</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <div id="log"></div>
+    <!--/.HTML modal-->
+    <script>
+        function add() {
+            var nombre = document.getElementById("nombre").value;
+            var apellido = document.getElementById("apellido").value;
+            var telefono = document.getElementById("telefono").value;
+            var registro = ({
+                "nombre": nombre,
+                "apellido": apellido,
+                "telefono": telefono
+            });
             //var cadena =JSON.parse(registro);
-            registros.push(registro);           
+            registros.push(registro);
             console.log(registros);
-            localStorage.setItem('registros',JSON.stringify(registros));
+            localStorage.setItem('registros', JSON.stringify(registros));
         }
-        function printer(){
-            
-            if(registros.length>0){
-                temp= registros;
+
+        function printer() {
+
+            if (registros.length > 0) {
+                temp = registros;
                 console.log(temp);
                 var tb = document.createElement("table");
-                var r=temp;
-                for(x in r){
-                    
-                var tr = document.createElement("tr");
-                var td1= document.createElement("td");
-                var txt1= document.createTextNode(temp[x].nombre);
-                var td2= document.createElement("td");
-                var txt2= document.createTextNode(temp[x].apellido);
-                var td3= document.createElement("td");
-                var txt3= document.createTextNode(temp[x].telefono);
-                var td4 = document.createElement("td");
-                var lnkEditar= document.createElement("a");
-                var lnkEliminar= document.createElement("a");
-                var txtEditar=document.createTextNode("Editar");  
-                var txtEliminar=document.createTextNode("Editar"); 
-                
-                lnkEditar.classList.add("btn");
-                lnkEditar.classList.add("btn-success");
-                lnkEditar.classList.add("editar");
-                lnkEditar.appendChild(txtEditar);
-                td4.appendChild(lnkEditar);
-                
-                td1.appendChild(txt1);
-                tr.appendChild(td1);
-                
-                td2.appendChild(txt2);
-                tr.appendChild(td2); 
-            
-                td3.appendChild(txt3);
-                tr.appendChild(td3);
-                
-                tr.appendChild(td4);
-                tb.appendChild(tr);
-                
-                tb.setAttribute('id','table');
-                tb.classList.add("table");
-                tb.classList.add("table-dark");
-                document.getElementById("resultado").appendChild(tb);
-                
-                    
+                tb.setAttribute('id','tbRegistros');
+                var r = temp;
+                for (x in r) {
+
+                    var tr = document.createElement("tr");
+                    var td1 = document.createElement("td");
+                    var txt1 = document.createTextNode(temp[x].nombre);
+                    var td2 = document.createElement("td");
+                    var txt2 = document.createTextNode(temp[x].apellido);
+                    var td3 = document.createElement("td");
+                    var txt3 = document.createTextNode(temp[x].telefono);
+                    var td4 = document.createElement("td");
+                    var lnkEditar = document.createElement("a");
+                    var lnkEliminar = document.createElement("a");
+                    var txtEditar = document.createTextNode("Editar");
+                    var txtEliminar = document.createTextNode("Eliminar" + temp[x].nombre);
+
+                    //boton para editar registro
+                    lnkEditar.classList.add("btn");
+                    lnkEditar.classList.add("btn-success");
+                    lnkEditar.classList.add("editar");
+                    lnkEditar.appendChild(txtEditar);
+
+                    //boton para editar registro
+                    lnkEliminar.classList.add("btn");
+                    lnkEliminar.classList.add("btn-warning");
+                    lnkEliminar.classList.add("eliminar");
+                    lnkEliminar.appendChild(txtEliminar);
+                    lnkEliminar.setAttribute("onclick", "fEliminar(this)");
+
+                    //Se agrega a la última celda
+                    td4.appendChild(lnkEditar);
+                    td4.appendChild(lnkEliminar);
+
+
+                    td1.appendChild(txt1);
+                    tr.appendChild(td1);
+
+                    td2.appendChild(txt2);
+                    tr.appendChild(td2);
+
+                    td3.appendChild(txt3);
+                    tr.appendChild(td3);
+
+                    tr.appendChild(td4);
+                    tb.appendChild(tr);
+
+                    tb.setAttribute('id', 'table');
+                    tb.classList.add("table");
+                    tb.classList.add("table-dark");
+                    document.getElementById("resultado").appendChild(tb);
+
+
                 }
             }
-            
+
         }
-            
-        </script>
+
+        function fEliminar(obj) {
+            var hijo = null;
+            padre = obj.parentElement.parentElement.parentElement;
+            var hijo = obj.parentElement.parentElement;
+            console.log(hijo);
+            $('#modalConfirmDelete').modal('show');
+            document.getElementById("confirm").setAttribute('data-id',hijo.rowIndex);
+
+
+        }
+        function actualiza(){
+            rw =document.getElementById("confirm").getAttribute('data-id');
+            console.log(rw);
+            padre.deleteRow(rw);
+            $('#modalConfirmDelete').modal('hide');
+            rw=null; 
+        }
+        function log(message) {
+            $log = $('#log');
+
+            $log.append(message + '<br />');
+        }
+
+    </script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/js/mdb.min.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

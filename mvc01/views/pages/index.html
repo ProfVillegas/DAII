@@ -30,7 +30,7 @@ foreach($data['pages'] as $page){
         
     </td>    
     <td scope="row">
-        <a href="#" class="btn btn-default btn-rounded "><i class="fa fa-pencil"></i></a> 
+        <a class="btn btn-default btn-rounded " href="<?=WEBROOT.DS.(App::getRouter()->getController());?>/edit/<?=$page['alias'];?>"><i class="fa fa-pencil"></i></a> 
         <a href="#" class="btn btn-danger btn-rounded "><i class="fa fa-trash"></i></a>
     </td>
 </tr>
