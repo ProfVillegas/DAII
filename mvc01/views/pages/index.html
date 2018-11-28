@@ -13,7 +13,7 @@
         <?php    
             }
         ?>
-        <th><a href="#"><a class="btn btn-primary btn-rounded "><i class="fa fa-plus"></i></a></a></th>
+        <th><a href="<?=WEBROOT.DS.(App::getRouter()->getController());?>/new/" class="btn btn-primary btn-rounded "><i class="fa fa-plus"></i></a></th>
         </tr>
         
     </thead>
@@ -26,8 +26,8 @@ foreach($data['pages'] as $page){
     <td><?=$page['titulo'];?></td>    
     <td><?=$page['contenido'];?></td>    
     <td>
-        <?=($page['es_publicado']==1)?'<a href="#" class="btn btn-success btn-rounded"><i class="fa fa-eye"></i></a>':'<a href="#" class="btn btn btn-blue-grey btn-rounded "><i class="fa fa-eye-slash"></i></a>';?>
-        
+        <?=($page['es_publicado']==1)?'<a onclick="fnEliminar(this,1);" href="javascript:;" class="espublicado btn btn-success btn-rounded"><i class="fa fa-eye"></i></a>':'<a onclick="fnEliminar(this,0);" href="javascript:;" class="espublicado btn btn-blue-grey btn-rounded "><i class="fa fa-eye-slash"></i></a>';?>
+        <input type="hidden" name="id" value="<?=$page['id'];?>" data-seccion="pages" /> 
     </td>    
     <td scope="row">
         <a class="btn btn-default btn-rounded " href="<?=WEBROOT.DS.(App::getRouter()->getController());?>/edit/<?=$page['alias'];?>"><i class="fa fa-pencil"></i></a> 

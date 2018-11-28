@@ -25,4 +25,24 @@ class Page extends Model{
         return isset($resultado[0])?$resultado[0]:null;
         
     }
+    //
+    public function save_register($row=array()){
+        
+        if(empty($row)){
+            $error['id']="No se puede realizar la operación";
+            return json_encode($error,1);
+        } else{
+            //Saneamos la cadena alias para bloquear la inyección de código malicioso
+            $id = $this->db->escape($row['id']);
+            $alias = $this->db->escape($row['alias']);
+            $titulo = $this->db->escape($row['titulo']);
+            $contenido = $this->db->escape($row['contenido']);
+            $es_publicado = $this->db->escape($row['es_publicado']);
+            $sql="update paginas set alias='{$alias}', titulo ='{$titulo}', contenido='{$contenido}',es_publicado='{$es_publicado}' where id ='{$id}' ";
+            $this->db->query($sql);
+        }
+        
+    }
 }
+
+

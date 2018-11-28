@@ -3,29 +3,29 @@
 
             <!-- ID -->
             <div class="md-form ">
-                <input type="text" id="txtID" class="form-control" name ="id" value="<?=$data['page']['id'];?>" readonly>
+                <input type="text" id="txtID" class="form-control" name ="id" value="<?=@$data['page']['id'];?>" readonly>
                 <label for="txtID">ID</label>
             </div>
             <!-- ALIAS -->
             <div class="md-form ">
-                <input type="text" id="txtAlias" class="form-control" name ="alias" value="<?=$data['page']['alias'];?>" readonly>
+                <input type="text" id="txtAlias" class="form-control" name ="alias" value="<?=@$data['page']['alias'];?>" readonly>
                 <label for="txtAlias">ALIAS</label>
             </div>
             <!-- NOMBRE -->
             <div class="md-form ">
-                <input type="text" id="txtTitulo" class="form-control" name ="nombre" value="<?=$data['page']['titulo'];?>" readonly>
+                <input type="text" id="txtTitulo" class="form-control" name ="titulo" value="<?=@$data['page']['titulo'];?>" readonly>
                 <label for="txtTitulo">TÍTULO</label>
             </div>
             <!--CONTENIDO-->
             <div class="md-form">
-                <textarea type="text" id="txtContenido" class="form-control md-textarea" rows="3"><?=$data['page']['contenido'];?></textarea>
+                <textarea type="text" name="contenido" id="txtContenido" class="form-control md-textarea" rows="3"><?=@$data['page']['contenido'];?></textarea>
                 <label for="txtContenido">CONTENIDO</label>
             </div>
 
             <!-- es_publicado -->
             <span>Publicado</span>
             <select class="mdb-select" name="es_publicado">
-                <option value="0" <?=$data['page']['id']==0?"selected":" ";?>>Desactivado</option>
-                <option value="1" <?=$data['page']['id']==1?"selected":" ";?>>Activador</option>
+                <option value="0" <?=@$data['page']['es_publicado']==0?"selected":" ";?>>Desactivado</option>
+                <option value="1" <?=@$data['page']['es_publicado']==1?"selected":" ";?>>Activador</option>
             </select>
 

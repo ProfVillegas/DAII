@@ -27,6 +27,18 @@ class PagesController extends Controller{
             
         }
     }
+
+    public function new(){
+        $params = App::getRouter()->getParams();
+
+        if ( isset($params[0]) ){
+            $alias = strtolower($params[0]);
+            //$this->data['content'] = "Here will be a page with '{$alias}' alias";
+            //Accedemos a un registro especifico
+            $this->data['page']= $this->model->getByAlias($alias);
+            
+        }
+    }
     public function edit(){
         $params = App::getRouter()->getParams();
 
@@ -40,7 +52,18 @@ class PagesController extends Controller{
     }
     //Hacemos las correcciones correcciones en las diferentes vistas
     public function save(){
-        
+        $params = App::getRouter()->getParams();
+
+        if ( isset($params[0]) ){
+            $row['id']=$_POST['id'];
+            $row['alias']=$_POST['alias'];
+            $row['titulo']=$_POST['titulo'];
+            $row['contenido']=$_POST['contenido'];
+            $row['es_publicado']=$_POST['es_publicado'];
+            $this->data['page']=$this->model->save_register($row);
+        } else {
+            
+        }
     }
 
 }

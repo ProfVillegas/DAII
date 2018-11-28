@@ -1,0 +1,8 @@
+<form action="<?=WEBROOT.DS.(App::getRouter()->getController());?>/save/" method="post" enctype="multipart/form-data">
+
+<?php 
+include("form.html");
+?>
+    <input type="submit" value="Actualizar" />
+    <input type="button" value="Cancelar" onclick="javascript:window.history.back(-1);" />
+</form>

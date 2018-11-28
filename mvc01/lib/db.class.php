@@ -9,6 +9,7 @@ class DB{
         if(mysqli_connect_error()){
             throw new Exception("Could not connect to {$db}");
         }
+        $this->conexion->set_charset("utf8");
         
     }
     public function query($sql){
