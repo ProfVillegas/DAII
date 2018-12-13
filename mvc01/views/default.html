@@ -82,7 +82,16 @@
     </header>
 
     <!-- Start your project here-->
-    <div style="height: 160vh">
+    <div style="container">
+        
+        <?php if(Session::hasFlash()){
+        ?>
+            <div class="alert alert-info container" role="alert">
+                <?php Session::flash();?>
+            </div>
+        <?php
+        }
+        ?>
         <div class="flex-center flex-column">
             <p class="animated fadeIn text-muted">
                 <?=$data['content']?>

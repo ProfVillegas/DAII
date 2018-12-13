@@ -6,9 +6,8 @@ define('WEBROOT', 'http://localhost'.RUTA_LOCAL);
 define('VIEWS_PATH', ROOT.DS.'views');
 
 require_once(ROOT.DS.'lib'.DS.'init.php');
-echo "<pre style='display:none;'>";
-print_r($_SERVER);
-echo "</pre>";
+
+Session::setFlash('Mensaje de prueba');
 App::run(str_replace(RUTA_LOCAL,"",$_SERVER['REQUEST_URI']));
 
 
